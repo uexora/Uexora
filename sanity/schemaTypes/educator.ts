@@ -24,16 +24,16 @@ export const educator = defineType({
     defineField({ name: 'photo', title: 'Photo', type: 'picture', description: 'A portrait, ideally 4:5 (taller than wide).', validation: (r) => r.required() }),
     defineField({
       name: 'sample',
-      title: 'Sample profile (placeholder)',
+      title: 'Sample photo',
       type: 'boolean',
       initialValue: false,
-      description: 'On for placeholder cards. Add the educator’s real name, subject and photo, then turn this off.',
+      description: 'Tick while the photo is a stand-in (e.g. a stock photo). While any card is ticked, one small line under the section says the photos are illustrative. Upload the educator’s own photo above, then untick.',
     }),
     defineField({ name: 'order', title: 'Position', type: 'number', description: 'Lower numbers show first.' }),
   ],
   orderings: [{ title: 'Position', name: 'order', by: [{ field: 'order', direction: 'asc' }] }],
   preview: {
     select: { title: 'name', subject: 'subject', media: 'photo', sample: 'sample' },
-    prepare: ({ title, subject, media, sample }) => ({ title: sample ? `SAMPLE · ${title}` : title, subtitle: subject, media }),
+    prepare: ({ title, subject, media, sample }) => ({ title, subtitle: sample ? `${subject} · sample photo` : subject, media }),
   },
 });

@@ -48,12 +48,14 @@ export default function Educators({
                 <figcaption>
                   <span className="educator__subject">{e.subject}</span>
                   <span className="educator__name">{e.name}</span>
-                  {e.sample ? <span className="educator__meta">Sample profile</span> : e.credential ? <span className="educator__meta">{e.credential}</span> : null}
+                  {e.credential ? <span className="educator__meta">{e.credential}</span> : null}
                 </figcaption>
               </figure>
             </li>
           ))}
         </ul>
+        {/* One quiet line for the whole section while any card still has a stand-in photo. */}
+        {educators.some((e) => e.sample) ? <p className="educators__note">Photos shown are illustrative.</p> : null}
       </div>
     </section>
   );

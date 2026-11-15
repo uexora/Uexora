@@ -11367,3 +11367,9 @@ html.reveal-ready .approach9[data-variant='orbit'] .approach9__body[data-reveal]
     scroll-snap-align: start;
   }
 }
+/* While any card still has a stand-in photo, one quiet line under the grid says so. */
+.educators__note {
+  margin-top: clamp(1.2rem, 2vw, 1.6rem);
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+}
