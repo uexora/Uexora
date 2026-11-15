@@ -11270,8 +11270,8 @@ html.reveal-ready .approach9[data-variant='orbit'] .approach9__body[data-reveal]
 }
 
 /* --------------------------------------------------------------------------
-   Educators (Education page): portrait cards from Studio. The subject sits in capitals behind a
-   short gold rule, then the name and one line of qualification. No hover zoom on the photos.
+   Educators (Education page): portrait cards from Studio. The subject sits in capitals, then the
+   name and one line of qualification. No hover zoom on the photos.
    -------------------------------------------------------------------------- */
 .educators {
   list-style: none;
@@ -11313,23 +11313,12 @@ html.reveal-ready .approach9[data-variant='orbit'] .approach9__body[data-reveal]
   gap: 0.35rem;
 }
 .educator__subject {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
   font-family: var(--font-sub), sans-serif;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--blue-700);
-}
-.educator__subject::before {
-  content: '';
-  flex: none;
-  width: 1.4rem;
-  height: 2px;
-  border-radius: 2px;
-  background: var(--gold-500);
 }
 [data-tone='dark'] .educator__subject {
   color: var(--gold-400);
