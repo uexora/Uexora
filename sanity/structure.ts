@@ -5,7 +5,7 @@ const newest = [{ field: 'submittedAt', direction: 'desc' as const }];
 
 const byPosition = [{ field: 'order', direction: 'asc' as const }];
 
-/** Studio sidebar: contact form enquiries, one entry per page plus the site settings, the programme and service pages, reviews, then the blog. */
+/** Studio sidebar: contact form enquiries, one entry per page plus the site settings, the programme and service pages, educators, reviews, then the blog. */
 export const structure: StructureResolver = (S) =>
   S.list()
     .title('Content')
@@ -27,6 +27,7 @@ export const structure: StructureResolver = (S) =>
       S.divider(),
       S.listItem().title('Education programmes').id('programmes').child(S.documentTypeList('programme').title('Education programmes').defaultOrdering(byPosition)),
       S.listItem().title('Marketing services').id('marketing-services').child(S.documentTypeList('marketingService').title('Marketing services').defaultOrdering(byPosition)),
+      S.listItem().title('Educators').id('educators').child(S.documentTypeList('educator').title('Educators').defaultOrdering(byPosition)),
       S.listItem()
         .title('Reviews')
         .id('reviews')

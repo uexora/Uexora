@@ -9,8 +9,10 @@ import ServiceCards from '@/components/sections/ServiceCards';
 import CtaBand from '@/components/sections/CtaBand';
 import Signpost from '@/components/sections/Signpost';
 import Reviews from '@/components/sections/Reviews';
+import Educators from '@/components/sections/Educators';
 import { getEducation } from '@/lib/cms';
 import { getReviews } from '@/lib/cms/reviews';
+import { getEducators } from '@/lib/cms/educators';
 import { heroSlides } from '@/lib/cms/services';
 import { pageMetadata } from '@/lib/seo';
 
@@ -20,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function EducationPage() {
-  const [e, reviews] = await Promise.all([getEducation(), getReviews('education')]);
+  const [e, reviews, educators] = await Promise.all([getEducation(), getReviews('education'), getEducators()]);
   const stats = (e.stats || []).filter((s) => s?.value && s?.label);
   return (
     <>
@@ -75,6 +77,16 @@ export default async function EducationPage() {
       <SkillsMosaic id="beyond" heading={e.beyond.heading} paragraphs={e.beyond.paragraphs} skills={e.beyond.skills} images={e.beyond.skillImages} tone="dark" />
 
       <Signpost id="choose" division="education" heading={e.choose.heading} intro={e.choose.intro} rows={e.choose.rows} services={e.programmes} tone="light" />
+
+      {/* Educators from Studio; hidden until there is one. Heading and intro: DRAFT copy. */}
+      <Educators
+        id="educators"
+        eyebrow="Educators"
+        heading="Meet the people who teach"
+        intro="Subject specialists and mentors who guide every learner, from school tuition and exam preparation to AI, robotics and communication skills."
+        educators={educators}
+        tone="light"
+      />
 
       {/* Real reviews from Studio; hidden until there is one. Heading: DRAFT copy. */}
       <Reviews id="reviews" eyebrow="Reviews" heading="What learners and parents say" reviews={reviews} tone="dark" />

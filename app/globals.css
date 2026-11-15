@@ -11268,3 +11268,102 @@ html.reveal-ready .approach9[data-variant='orbit'] .approach9__body[data-reveal]
     animation: none !important;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Educators (Education page): portrait cards from Studio. The subject sits in capitals behind a
+   short gold rule, then the name and one line of qualification. No hover zoom on the photos.
+   -------------------------------------------------------------------------- */
+.educators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1.2rem, 2.2vw, 2rem) clamp(1rem, 1.8vw, 1.6rem);
+}
+.educator figure {
+  margin: 0;
+  display: grid;
+  gap: 1.1rem;
+}
+.educator__photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 1.4rem;
+  overflow: hidden;
+  background: var(--navy-900);
+  border: 1px solid color-mix(in srgb, var(--fg) 10%, transparent);
+  box-shadow: 0 30px 60px -42px rgba(6, 16, 58, 0.55);
+}
+.educator__photo img {
+  object-fit: cover;
+  object-position: center 22%;
+}
+/* the thin gold light along the top edge, as on the review cards */
+.educator__photo::after {
+  content: '';
+  position: absolute;
+  inset: 0 14% auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-400), transparent);
+  opacity: 0.8;
+}
+.educator figcaption {
+  display: grid;
+  gap: 0.35rem;
+}
+.educator__subject {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-sub), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue-700);
+}
+.educator__subject::before {
+  content: '';
+  flex: none;
+  width: 1.4rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gold-500);
+}
+[data-tone='dark'] .educator__subject {
+  color: var(--gold-400);
+}
+.educator__name {
+  font-family: var(--font-heading), serif;
+  font-size: clamp(1.25rem, 1.55vw, 1.5rem);
+  line-height: 1.2;
+  color: var(--fg);
+}
+.educator__meta {
+  font-size: 0.9rem;
+  color: var(--fg-muted);
+}
+@media (max-width: 1099px) {
+  .educators {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 699px) {
+  .educators {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: min(72vw, 300px);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    padding-bottom: 0.6rem;
+    scrollbar-width: none;
+  }
+  .educators::-webkit-scrollbar {
+    display: none;
+  }
+  .educator {
+    scroll-snap-align: start;
+  }
+}
