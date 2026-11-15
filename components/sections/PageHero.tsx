@@ -1,5 +1,7 @@
 import { Fragment } from 'react';
+import { getImageProps } from 'next/image';
 import CmsImage from '@/components/ui/CmsImage';
+import { cmsImageLoader } from '@/lib/cms/imageLoader';
 import Link from 'next/link';
 import Monogram from '@/components/brand/Monogram';
 import Button from '@/components/ui/Button';
@@ -22,6 +24,8 @@ type Props = {
   /** Image-led variant (division landing pages): a full-width photo behind the hero. With an
       `image` as well, that becomes a floating card, with `stat` in a frosted strip on it. */
   background?: { src: string; alt: string };
+  /** Optional portrait photo used instead of `background` on phones and tablets. */
+  backgroundMobile?: { src: string; alt: string };
   stat?: { value: string; label: string; text?: string };
   /** Image-led variant only: photos that take turns in a floating card on the right. */
   slides?: HeroSlide[];
@@ -30,7 +34,25 @@ type Props = {
   plain?: boolean;
 };
 
-export default function PageHero({ eyebrow, title, lead, tone = 'light', primary, secondary, image, chips, crumbs, background, stat, slides, plain = false }: Props) {
+/** The hero photo with a separate (portrait) photo for phones: the browser loads only the one it shows. */
+function ArtDirected({ wide, phone }: { wide: { src: string; alt: string }; phone: { src: string; alt: string } }) {
+  const common = { alt: wide.alt, fill: true, quality: 82, loader: cmsImageLoader, fetchPriority: 'high' as const };
+  const {
+    props: { srcSet: wideSet },
+  } = getImageProps({ ...common, src: wide.src, sizes: '135vw' });
+  const {
+    props: { srcSet: phoneSet, ...rest },
+  } = getImageProps({ ...common, src: phone.src, sizes: '100vw' });
+  return (
+    <picture>
+      <source media="(min-width: 901px)" srcSet={wideSet} sizes="135vw" />
+      {/* eslint-disable-next-line jsx-a11y/alt-text -- alt comes through `rest` */}
+      <img {...rest} srcSet={phoneSet} />
+    </picture>
+  );
+}
+
+export default function PageHero({ eyebrow, title, lead, tone = 'light', primary, secondary, image, chips, crumbs, background, backgroundMobile, stat, slides, plain = false }: Props) {
   const dark = tone === 'dark';
   const immersive = !!background || plain;
   return (
@@ -43,18 +65,22 @@ export default function PageHero({ eyebrow, title, lead, tone = 'light', primary
         <>
           {background && !plain ? (
             <div className="page-hero__bg" data-parallax="0.12">
-              {/* Cropped to fill a box taller than the photo's own shape (the full hero on wide
-                  screens, down to the buttons on phones), so it is drawn wider than the viewport:
-                  ask for a larger file than 100vw or it looks soft. */}
-              <CmsImage
-                src={background.src}
-                alt={background.alt}
-                fill
-                sizes="(max-width: 900px) 220vw, 135vw"
-                quality={82}
-                preload
-                fetchPriority="high"
-              />
+              {backgroundMobile ? (
+                <ArtDirected wide={background} phone={backgroundMobile} />
+              ) : (
+                // Cropped to fill a box taller than the photo's own shape (the full hero on wide
+                // screens, a full-height screen on phones), so it is drawn wider than the
+                // viewport: ask for a larger file than 100vw or it looks soft.
+                <CmsImage
+                  src={background.src}
+                  alt={background.alt}
+                  fill
+                  sizes="(max-width: 900px) 260vw, 135vw"
+                  quality={82}
+                  preload
+                  fetchPriority="high"
+                />
+              )}
             </div>
           ) : null}
           <div className="page-hero__veil" aria-hidden="true" />
@@ -87,6 +113,9 @@ export default function PageHero({ eyebrow, title, lead, tone = 'light', primary
       )}
       <PageHeroMotion>
         <div className="page-hero__copy">
+          {/* Breadcrumb, title and lead: one block on photo heroes on phones (title at the top of
+              the photo, lead at its foot); no box of its own elsewhere (display: contents). */}
+          <div className="page-hero__head">
           {crumbs?.length ? (
             <nav className="page-hero__crumbs" aria-label="Breadcrumb">
               <ol>
@@ -112,6 +141,7 @@ export default function PageHero({ eyebrow, title, lead, tone = 'light', primary
           <p className="lead">
             {becauseYou(lead)}
           </p>
+          </div>
           <div className="btn-row">
             <Button href={primary.href} variant={dark ? 'gold' : 'blue'}>
               {primary.label}

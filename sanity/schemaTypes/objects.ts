@@ -729,6 +729,12 @@ export const service = defineType({
       type: 'picture',
       description: 'Full-width photo behind the top of the page. Landscape, around 3000 px wide, with the subject towards the right (the title sits on the left).',
     }),
+    defineField({
+      name: 'heroImageMobile',
+      title: 'Hero photo for phones',
+      type: 'picture',
+      description: 'Optional. A portrait photo (around 1200 × 2000 px) that fills the phone screen: the title sits over the top third and the intro over the bottom, so keep the people in the middle. Without one, the hero background above is cropped to fit.',
+    }),
     defineField({ name: 'seo', title: 'Search & social', type: 'seo' }),
   ],
   preview: { select: { title: 'title', subtitle: 'slug', media: 'image' } },

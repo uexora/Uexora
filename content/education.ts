@@ -368,6 +368,8 @@ export const education = {
       { label: 'Corporate trainings', href: '/education/corporate-trainings' },
     ],
     background: { src: '/images/heroes/education-hero-bg.jpg', alt: 'Two smiling students at their desks in a classroom, one reading a textbook' },
+    /** Optional portrait photo for phones (set in Studio); the background is used when empty. */
+    backgroundMobile: undefined as { src: string; alt: string } | undefined,
     primary: { label: 'Explore the programmes', href: '/education#programmes' },
     secondary: { label: 'Speak with our education team', href: '/contact?division=education' },
   },

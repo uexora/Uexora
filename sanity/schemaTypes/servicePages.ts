@@ -25,6 +25,7 @@ const groupOf: Record<string, string> = {
   faqs: 'questions',
   image: 'photos',
   heroImage: 'photos',
+  heroImageMobile: 'photos',
   seo: 'seo',
 };
 

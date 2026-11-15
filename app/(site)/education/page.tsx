@@ -35,6 +35,7 @@ export default async function EducationPage() {
         primary={e.hero.primary}
         secondary={e.hero.secondary}
         background={e.hero.background}
+        backgroundMobile={e.hero.backgroundMobile}
         slides={heroSlides('education', e.programmes)}
         chips={e.hero.chipLinks?.length ? e.hero.chipLinks : e.hero.chips}
       />

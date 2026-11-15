@@ -71,6 +71,8 @@ export type Service = {
   image?: { src: string; alt: string };
   /** Wide photo behind the detail page hero (landscape, around 3000 px); falls back to `image`. */
   heroImage?: { src: string; alt: string };
+  /** Optional portrait photo used instead of the hero background on phones and tablets. */
+  heroImageMobile?: { src: string; alt: string };
   seo?: { title?: string; description?: string };
 };
 

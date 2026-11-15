@@ -172,6 +172,7 @@ export default function ServicePage({ division, service: s, statement, cta }: Pr
         primary={{ label: enquire, href: contact }}
         secondary={heroSecondary}
         background={s.heroImage || s.image}
+        backgroundMobile={s.heroImageMobile}
         chips={s.highlights}
         crumbs={[{ label: meta.name, href: meta.path }, { label: unitCap }]}
       />

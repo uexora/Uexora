@@ -3681,6 +3681,10 @@ a.fmarquee__card:focus-visible {
   display: grid;
   gap: 1.5rem;
 }
+/* Groups the breadcrumb, title and lead for the phone layout; no box of its own elsewhere. */
+.page-hero__head {
+  display: contents;
+}
 .page-hero__copy .h1 {
   max-width: 12ch;
 }
@@ -4160,14 +4164,31 @@ a.fmarquee__card:focus-visible {
   }
 }
 @media (max-width: 900px) {
-  /* Phones and tablets: the photo keeps its own landscape shape (as on a laptop, no tall crop)
-     at full width under the header, with the breadcrumb and title on it; its foot fades into
-     the page colour, and the rest of the copy carries on below. */
+  /* Phones and tablets, photo heroes: the photo fills the first screen from the very top. The
+     breadcrumb and title sit at the top of it, the lead at its foot, and the buttons and keywords
+     carry on below on the page colour. A dark wash at the top and the foot keeps the type legible. */
   .page-hero--immersive {
+    --hero-top: calc(var(--header-h) + var(--announce-h) + clamp(24px, 5vw, 40px));
     min-height: 0;
     align-content: start;
-    padding-top: calc(var(--header-h) + var(--announce-h) + clamp(28px, 6vw, 56px));
+    padding-top: var(--hero-top);
     padding-bottom: clamp(48px, 10vw, 80px);
+  }
+  .page-hero--immersive:not(.page-hero--plain) .page-hero__head {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-height: calc(100svh - var(--hero-top) - clamp(20px, 5vw, 32px));
+  }
+  .page-hero--immersive:not(.page-hero--plain) .page-hero__crumbs {
+    margin-bottom: 0;
+  }
+  .page-hero--immersive:not(.page-hero--plain) .page-hero__head .lead {
+    margin-top: auto;
+    padding-top: 2rem;
+  }
+  .page-hero--immersive:not(.page-hero--plain) .btn-row {
+    margin-top: clamp(1.2rem, 4vw, 2rem);
   }
   /* The Marketing landing has no photo: its copy starts under the header with its card below. */
   .page-hero--plain.page-hero--immersive {
@@ -4178,37 +4199,40 @@ a.fmarquee__card:focus-visible {
     display: none;
   }
   .page-hero__bg {
-    inset: calc(var(--header-h) + var(--announce-h)) 0 auto;
-    aspect-ratio: 3 / 2;
-    -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 62%, transparent 100%);
-    mask-image: linear-gradient(to bottom, #000 0, #000 62%, transparent 100%);
+    inset: 0 0 auto;
+    height: 100svh;
+    /* Fades the last few pixels out so no hairline of the photo shows at its lower edge. */
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 6px), transparent calc(100% - 1px));
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 6px), transparent calc(100% - 1px));
+  }
+  /* Where supported, the photo ends just below the lead even when the title and lead run longer
+     than one screen. */
+  @supports (anchor-name: --a) {
+    .page-hero--immersive:not(.page-hero--plain) .page-hero__head {
+      anchor-name: --hero-head;
+    }
+    .page-hero--immersive:not(.page-hero--plain) .page-hero__bg {
+      height: auto;
+      min-height: 100svh;
+      bottom: calc(anchor(--hero-head bottom) - clamp(20px, 5vw, 32px));
+    }
   }
   .page-hero__bg img {
     object-position: center;
   }
-  /* Where supported, the photo reaches down behind the buttons (it ends just below them, so it
-     fits each page's copy); elsewhere it keeps the landscape shape above. */
-  @supports (anchor-name: --a) {
-    .page-hero--immersive:not(.page-hero--plain) .btn-row {
-      anchor-name: --hero-actions;
-    }
-    .page-hero--immersive:not(.page-hero--plain) .page-hero__bg {
-      aspect-ratio: auto;
-      bottom: calc(anchor(--hero-actions bottom) - clamp(28px, 8vw, 48px));
-      -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 72%, transparent 100%);
-      mask-image: linear-gradient(to bottom, #000 0, #000 72%, transparent 100%);
-    }
-  }
-  /* A light tint for the title, deepening to the page colour at the photo's foot. */
   .page-hero__bg::after {
     content: '';
     position: absolute;
     inset: 0;
     background: linear-gradient(
       to bottom,
-      color-mix(in srgb, var(--bg) 30%, transparent) 0%,
-      color-mix(in srgb, var(--bg) 40%, transparent) 60%,
-      color-mix(in srgb, var(--bg) 70%, transparent) 100%
+      color-mix(in srgb, var(--bg) 88%, transparent) 0%,
+      color-mix(in srgb, var(--bg) 55%, transparent) 20%,
+      color-mix(in srgb, var(--bg) 10%, transparent) 38%,
+      color-mix(in srgb, var(--bg) 0%, transparent) 50%,
+      color-mix(in srgb, var(--bg) 55%, transparent) 70%,
+      color-mix(in srgb, var(--bg) 92%, transparent) 90%,
+      var(--bg) 100%
     );
   }
   .page-hero__veil {
