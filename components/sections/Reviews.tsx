@@ -1,5 +1,6 @@
 import CmsImage from '@/components/ui/CmsImage';
 import ReviewsPause from '@/components/sections/ReviewsPause';
+import ReviewsSwipe from '@/components/sections/ReviewsSwipe';
 import type { Review } from '@/lib/cms/reviews';
 
 function Stars({ rating }: { rating: number }) {
@@ -128,6 +129,7 @@ export default function Reviews({
           {twoRows ? <Row reviews={second} speed={12} reverse /> : null}
         </div>
       ) : null}
+      {slider ? <ReviewsSwipe target={marqueeId} /> : null}
     </section>
   );
 }

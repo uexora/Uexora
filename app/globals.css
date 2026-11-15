@@ -10600,12 +10600,29 @@ html.reveal-ready [data-division='marketing'] .audience__card:nth-child(3)[data-
 .reviews-marquee__set .review {
   width: clamp(300px, 29vw, 440px);
 }
+/* Phones and tablets: no pause button. The row is a sideways scroller that people can swipe; a
+   small script (ReviewsSwipe) keeps it drifting slowly and holds still while a finger is on it. */
 @media (max-width: 899px) {
   .reviews-marquee__row[data-reverse] {
     display: none;
   }
   .reviews-marquee__set .review {
     width: min(82vw, 380px);
+  }
+  .reviews-pause {
+    display: none;
+  }
+  .reviews-marquee {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    touch-action: pan-x pan-y;
+  }
+  .reviews-marquee::-webkit-scrollbar {
+    display: none;
+  }
+  .reviews-marquee__track {
+    animation: none;
   }
 }
 @media (prefers-reduced-motion: reduce) {
