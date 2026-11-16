@@ -89,9 +89,15 @@ export async function generateMetadata(): Promise<Metadata> {
 
 /** Structured data for the organisation; the contact details and description come from the site settings. */
 function structuredData(s: Awaited<ReturnType<typeof getSettings>>) {
+  // Real profile links only (a network's bare home page is the placeholder), so search engines
+  // can tie the brand's social accounts to this site.
+  const sameAs = [s.instagram, s.facebook, s.linkedin, s.youtube, s.tiktok].filter(
+    (u): u is string => typeof u === 'string' && /^https?:\/\/[^/]+\/[^/?#]+/.test(u),
+  );
   const organization = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': `${site.url}/#organization`,
     name: site.legalName,
     alternateName: site.name,
     url: site.url,
@@ -100,6 +106,7 @@ function structuredData(s: Awaited<ReturnType<typeof getSettings>>) {
     description: s.description,
     email: s.email,
     ...(s.phone ? { telephone: s.phone } : {}),
+    ...(sameAs.length ? { sameAs } : {}),
     department: [
       {
         '@type': 'EducationalOrganization',
@@ -117,7 +124,17 @@ function structuredData(s: Awaited<ReturnType<typeof getSettings>>) {
       },
     ],
   };
-  const website = { '@context': 'https://schema.org', '@type': 'WebSite', name: site.name, url: site.url, inLanguage: 'en' };
+  // Google takes the site name shown in results from this (name, then alternateName).
+  const website = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${site.url}/#website`,
+    name: site.name,
+    alternateName: [site.legalName, 'uexora.com'],
+    url: `${site.url}/`,
+    inLanguage: 'en',
+    publisher: { '@id': `${site.url}/#organization` },
+  };
   return [organization, website];
 }
 
