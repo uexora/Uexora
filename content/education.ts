@@ -24,7 +24,7 @@ const programmes: Service[] = [
     seo: { description: 'Online school and academic support from Uexora Education: help understanding subjects, working through difficult concepts and building confidence in studies.' },
     image: { src: '/images/services/academic-support-study-together.jpg', alt: 'Two students working through an assignment together outdoors' },
     heroImage: { src: '/images/heroes/services/academic-support-and-school-tuition-2.jpg', alt: 'A young student taking notes during a one-to-one online lesson with her tutor on a laptop' },
-    highlights: ['Subject understanding', 'Working through difficult concepts', 'Confidence in studies', 'Guidance that fits each student'],
+    highlights: ['Online school', 'Subject understanding', 'Working through difficult concepts', 'Confidence in studies', 'Guidance that fits each student'],
     whoFor: 'School students who want extra guidance with their subjects, from everyday schoolwork to the concepts they find hardest.',
     details: [],
     gradeSupport: {
