@@ -13,7 +13,7 @@ type Point = { title: string; subtitle?: string; text?: string; icon?: string; i
 /**
  * Every page that shows the section plays it in its own way (see globals.css, "Approach
  * variants"), chosen to suit the page:
- *   stack   (school tuition)        badges drop in like blocks settling, text rises firmly
+ *   stack   (online school)         badges drop in like blocks settling, text rises firmly
  *   circuit (AI, coding, robotics)  a signal runs from the number to the badge, which powers on
  *   focus   (AI for professionals)  everything sharpens from a blur, the ring settles inwards
  *   wave    (communication)         badges pop and send out sound waves, lines spread from the centre
@@ -29,7 +29,7 @@ type Point = { title: string; subtitle?: string; text?: string; icon?: string; i
  */
 export type ApproachVariant = 'ring' | 'stack' | 'circuit' | 'focus' | 'wave' | 'wipe' | 'gentle' | 'scan' | 'target' | 'flip' | 'iris' | 'spark' | 'orbit';
 const VARIANTS: Record<string, ApproachVariant> = {
-  'academic-support-and-school-tuition': 'stack',
+  'online-school-and-academic-support': 'stack',
   'ai-coding-and-robotics-for-students': 'circuit',
   'ai-for-professionals-and-educators': 'focus',
   'communication-public-speaking-and-confidence-building': 'wave',

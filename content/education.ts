@@ -18,10 +18,10 @@ import { aiProfessionalsApproach, aiStudentsApproach, communicationApproach, cor
  */
 const programmes: Service[] = [
   {
-    title: 'Academic Support and School Tuition',
-    slug: 'academic-support-and-school-tuition',
+    title: 'Online School and Academic Support',
+    slug: 'online-school-and-academic-support',
     promise: 'Understand your subjects rather than memorise them, with support shaped around how you learn.',
-    seo: { description: 'Academic support and school tuition from Uexora Education: help understanding subjects, working through difficult concepts and building confidence in studies.' },
+    seo: { description: 'Online school and academic support from Uexora Education: help understanding subjects, working through difficult concepts and building confidence in studies.' },
     image: { src: '/images/services/academic-support-study-together.jpg', alt: 'Two students working through an assignment together outdoors' },
     heroImage: { src: '/images/heroes/services/academic-support-and-school-tuition-2.jpg', alt: 'A young student taking notes during a one-to-one online lesson with her tutor on a laptop' },
     highlights: ['Subject understanding', 'Working through difficult concepts', 'Confidence in studies', 'Guidance that fits each student'],
@@ -347,7 +347,7 @@ export const education = {
   seo: {
     title: 'Uexora Education | STEM, Tuition, JEE & NEET, IELTS & AI',
     description:
-      'Uexora Education: school tuition, STEM with AI, coding and robotics, JEE and NEET, IELTS, PTE and TOEFL, public speaking, special needs and corporate training.',
+      'Uexora Education: online school, STEM with AI, coding and robotics, JEE and NEET, IELTS, PTE and TOEFL, public speaking, special needs and corporate training.',
   },
 
   eyebrow: 'Uexora Education',
@@ -355,10 +355,10 @@ export const education = {
   lead:
     'From academic success and future-ready skills to confidence, communication and personal growth, we bring more opportunities to learn and develop. Because, you matter.',
   hero: {
-    chips: ['School tuition', 'JEE & NEET', 'IELTS · PTE · TOEFL', 'STEM, AI & robotics', 'AI for professionals', 'Public speaking', 'Special needs support', 'Corporate trainings'],
+    chips: ['Online school', 'JEE & NEET', 'IELTS · PTE · TOEFL', 'STEM, AI & robotics', 'AI for professionals', 'Public speaking', 'Special needs support', 'Corporate trainings'],
     /** The keywords under the hero buttons, each linking to its programme. */
     chipLinks: [
-      { label: 'School tuition', href: '/education/academic-support-and-school-tuition' },
+      { label: 'Online school', href: '/education/online-school-and-academic-support' },
       { label: 'JEE & NEET', href: '/education/competitive-exam-preparation' },
       { label: 'IELTS · PTE · TOEFL', href: '/education/overseas-education-and-english-language' },
       { label: 'STEM, AI & robotics', href: '/education/ai-coding-and-robotics-for-students' },
@@ -501,7 +501,7 @@ export const education = {
     heading: 'Which programme is right for you?',
     intro: 'Start from the goal rather than the course name. Each situation below leads to the programme built for it, and you can move between programmes as goals change.',
     rows: [
-      { need: 'Stronger results and more confidence in school subjects', slug: 'academic-support-and-school-tuition' },
+      { need: 'Stronger results and more confidence in school subjects', slug: 'online-school-and-academic-support' },
       { need: 'Preparing for JEE or NEET', slug: 'competitive-exam-preparation' },
       { need: 'Studying abroad or proving English proficiency', slug: 'overseas-education-and-english-language' },
       { need: 'Exploring STEM and technology hands-on', slug: 'ai-coding-and-robotics-for-students' },
@@ -537,7 +537,7 @@ export const education = {
     reasons: [
       {
         title: 'Everything in One Place',
-        text: 'From school tuition and competitive exam preparation to AI, robotics, public speaking, language proficiency, special needs support and corporate trainings, we bring a wide range of learning opportunities together on one platform. This makes it easier to explore different programmes as your goals evolve.',
+        text: 'From online school and competitive exam preparation to AI, robotics, public speaking, language proficiency, special needs support and corporate trainings, we bring a wide range of learning opportunities together on one platform. This makes it easier to explore different programmes as your goals evolve.',
       },
       {
         title: 'Learning That Fits Different Needs',

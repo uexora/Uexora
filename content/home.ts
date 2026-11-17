@@ -9,7 +9,7 @@ export const home = {
   seo: {
     title: 'UEXORA — Technology That Puts You First',
     description:
-      'UEXORA unites two divisions under one belief: your growth matters. Education from school tuition to AI and robotics, and a marketing studio for digital growth.',
+      'UEXORA unites two divisions under one belief: your growth matters. Education from online school to AI and robotics, and a marketing studio for digital growth.',
   },
 
   hero: {
@@ -36,7 +36,7 @@ export const home = {
   divisions: {
     heading: 'Choose your path.',
     intro:
-      'Two divisions, one company. UEXORA EDUCATION supports learners from school tuition to AI and robotics; UEXORA MARKETING STUDIO helps businesses build a stronger digital presence. Both start with the same question: what are you working towards?',
+      'Two divisions, one company. UEXORA EDUCATION supports learners from online school to AI and robotics; UEXORA MARKETING STUDIO helps businesses build a stronger digital presence. Both start with the same question: what are you working towards?',
     panels: [
       {
         key: 'education',
@@ -58,7 +58,7 @@ export const home = {
   },
 
   marquee: [
-    'School tuition',
+    'Online school',
     'JEE & NEET preparation',
     'IELTS · PTE · TOEFL',
     'AI, coding & robotics',

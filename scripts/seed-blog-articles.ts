@@ -124,7 +124,7 @@ const education = {
       'Uexora Education offers ',
       { t: 'competitive exam preparation', href: '/education/competitive-exam-preparation' },
       ' and ',
-      { t: 'academic support and school tuition', href: '/education/academic-support-and-school-tuition' },
+      { t: 'online school and academic support', href: '/education/online-school-and-academic-support' },
       '. If you would like to talk through a revision plan, ',
       { t: 'speak with our education team', href: '/contact?division=education' },
       '.'

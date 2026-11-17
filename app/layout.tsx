@@ -52,6 +52,7 @@ export async function generateMetadata(): Promise<Metadata> {
       'Uexora Education',
       'Uexora Marketing Studio',
       'academic support',
+      'online school',
       'school tuition',
       'JEE preparation',
       'NEET preparation',
@@ -113,7 +114,7 @@ function structuredData(s: Awaited<ReturnType<typeof getSettings>>) {
         name: 'Uexora Education',
         url: `${site.url}/education`,
         description:
-          'Academic support and school tuition, competitive exam preparation (JEE, NEET), IELTS/PTE/TOEFL and overseas education guidance, AI, coding and robotics, communication and public speaking, practical skills and inclusive learning support.',
+          'Online school and academic support, competitive exam preparation (JEE, NEET), IELTS/PTE/TOEFL and overseas education guidance, AI, coding and robotics, communication and public speaking, practical skills and inclusive learning support.',
       },
       {
         '@type': 'ProfessionalService',

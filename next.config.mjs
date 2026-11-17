@@ -37,6 +37,7 @@ const nextConfig = {
       { source: '/education/ai-coding-and-robotics', destination: '/education/ai-coding-and-robotics-for-students', permanent: true },
       { source: '/education/communication-public-speaking-and-confidence', destination: '/education/communication-public-speaking-and-confidence-building', permanent: true },
       { source: '/education/inclusive-and-specialised-learning-support', destination: '/education/special-needs-students-programme', permanent: true },
+      { source: '/education/academic-support-and-school-tuition', destination: '/education/online-school-and-academic-support', permanent: true },
       { source: '/education/practical-skills-and-personal-development', destination: '/education#programmes', permanent: true },
     ];
   },

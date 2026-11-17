@@ -84,7 +84,7 @@ export default async function EducationPage() {
         id="educators"
         eyebrow="Educators"
         heading="Meet the people who teach"
-        intro="Subject specialists and mentors who guide every learner, from school tuition and exam preparation to AI, robotics and communication skills."
+        intro="Subject specialists and mentors who guide every learner, from online school and exam preparation to AI, robotics and communication skills."
         educators={educators}
         tone="light"
       />

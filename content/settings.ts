@@ -5,7 +5,7 @@
 export const settings = {
   tagline: 'Technology that puts you first.',
   description:
-    'UEXORA brings two divisions together under one belief: your growth matters. Uexora Education supports learners from school tuition to AI and robotics; Uexora Marketing Studio helps businesses build a stronger digital presence.',
+    'UEXORA brings two divisions together under one belief: your growth matters. Uexora Education supports learners from online school to AI and robotics; Uexora Marketing Studio helps businesses build a stronger digital presence.',
   // TODO(client): replace with the real contact details before launch (or edit them in the studio).
   email: 'hello@uexora.com',
   educationEmail: 'education@uexora.com',
@@ -27,7 +27,7 @@ export const settings = {
   announcementOn: true,
   // Placeholder messages (the services already on the site) until real announcements are added.
   announcements: [
-    { text: 'School tuition', href: '/education#programmes' },
+    { text: 'Online school', href: '/education/online-school-and-academic-support' },
     { text: 'JEE & NEET preparation', href: '/education#programmes' },
     { text: 'IELTS · PTE · TOEFL', href: '/education#programmes' },
     { text: 'AI, coding & robotics', href: '/education#programmes' },
